@@ -21,7 +21,7 @@ const server = Bun.serve({
         },
         {
           headers: {
-            "Access-Control-Allow-Origin": "www.tradingview.com",
+            "Access-Control-Allow-Origin": "https://www.tradingview.com",
             "Access-Control-Allow-Methods": "GET, OPTIONS",
           },
         },
