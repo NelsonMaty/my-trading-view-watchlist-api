@@ -1,6 +1,7 @@
-const PORT = parseInt(process.env.PORT || "8080");
+const PORT: number = +(process.env.PORT || 8081);
+const NODE_ENV = process.env.NODE_ENV ?? "development";
 
-Bun.serve({
+const server = Bun.serve({
   port: PORT,
   fetch(req) {
     const url = new URL(req.url);
@@ -20,4 +21,5 @@ Bun.serve({
     }
   },
 });
-console.log(`Listening on port ${PORT}`);
+
+console.log(` Serving http://localhost:${server.port}`);
