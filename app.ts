@@ -6,6 +6,7 @@ const server = Bun.serve({
   async fetch(req) {
     let result = null;
     const path = new URL(req.url).pathname;
+    const method = req.method;
 
     if (path === "/symbols_list") {
       result = {
@@ -98,7 +99,7 @@ const server = Bun.serve({
       };
     }
 
-    if (path === "/replace_symbol") {
+    if (path === "/replace_symbol" && method === "POST") {
       const body = await req.json();
       result = JSON.stringify(body);
     }
