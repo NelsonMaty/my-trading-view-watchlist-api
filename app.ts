@@ -107,7 +107,8 @@ const server = Bun.serve({
       headers: {
         "Access-Control-Allow-Origin": "https://www.tradingview.com",
         "Access-Control-Allow-Methods": "GET, OPTIONS, POST",
-        "Access-Control-Allow-Headers": "X-Language, X-Requested-With",
+        "Access-Control-Allow-Headers":
+          "X-Language, X-Requested-With, content-type",
       },
     });
   },
