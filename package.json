@@ -3,9 +3,10 @@
   "private": true,
   "scripts": {
     "start": "bun app.ts",
-    "dev": "bun --hot app.ts"
+    "dev": "bun --watch app.ts"
   },
-  "devDependencies": {
-    "@types/bun": "latest"
+  "dependencies": {
+    "@elysiajs/cors": "^1.0.2",
+    "elysia": "^1.0.13"
   }
 }
