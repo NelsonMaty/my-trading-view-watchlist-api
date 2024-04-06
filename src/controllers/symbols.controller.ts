@@ -1,96 +1,26 @@
-export const symbolsController = {
-  listSymbols: () => {
-    return {
-      id: 19343430,
-      type: "custom",
-      name: "Watchlist",
-      symbols: [
-        "###USD CCL, BRECHA Y AJUSTADO",
-        "(BCBA:YPFD/NYSE:YPF+BCBA:PAMP/NYSE:PAM*25+BCBA:GGAL/NASDAQ:GGAL*10)/3",
-        "((BCBA:AAPL/NASDAQ:AAPL*20+BCBA:YPFD/NYSE:YPF)/2-FX_IDC:USDARS)/FX_IDC:USDARS*100",
-        "BCBA:YPFD/NYSE:YPF/(ECONOMICS:ARCPI/4262)",
-        "###INDICES",
-        "BCBA:IMV/(BCBA:AAPL/NASDAQ:AAPL*20)",
-        "BCBA:IMV",
-        "###BANCOS",
-        "NYSE:BBAR",
-        "NYSE:BMA",
-        "NASDAQ:GGAL",
-        "NYSE:SUPV",
-        "BCBA:BHIP",
-        "###ENERGETICAS",
-        "NYSE:CEPU",
-        "NYSE:EDN",
-        "NYSE:PAM",
-        "NASDAQ:CECO",
-        "BCBA:TRAN",
-        "###GAS & OIL",
-        "BCBA:COME",
-        "NYSE:TGS",
-        "BCBA:TGNO4",
-        "NYSE:YPF",
-        "BCBA:DGCU2",
-        "BCBA:METR",
-        "###MATERIALES",
-        "BCBA:ALUA",
-        "NYSE:LOMA",
-        "BCBA:TXAR",
-        "BCBA:CELU",
-        "BCBA:HARG",
-        "###AGRO",
-        "NASDAQ:CRESY",
-        "BCBA:AGRO",
-        "BCBA:SAMI",
-        "BCBA:INVJ",
-        "BCBA:SEMI",
-        "###CONSUMO",
-        "BCBA:CVH",
-        "BCBA:MIRG",
-        "BCBA:TECO2",
-        "BCBA:MORI",
-        "BCBA:HAVA",
-        "BCBA:MOLI",
-        "BCBA:AUSO",
-        "BCBA:MOLA",
-        "###CONSTRUCCION",
-        "BCBA:CTIO",
-        "BCBA:IRSA",
-        "###MERCADO",
-        "BCBA:BYMA",
-        "BCBA:VALO",
-        "###CEDEARS - ETFS",
-        "AMEX:SPY",
-        "NASDAQ:QQQ",
-        "AMEX:XLE",
-        "AMEX:XLF",
-        "AMEX:IWM",
-        "AMEX:EWZ",
-        "###CEDEARS - ARGY",
-        "NYSE:VIST",
-        "NASDAQ:MELI",
-        "###CEDEARS - TECH",
-        "NASDAQ:NVDA",
-        "NASDAQ:COIN",
-        "NASDAQ:AAPL",
-        "NASDAQ:TSLA",
-        "NASDAQ:META",
-        "NASDAQ:GOOG",
-        "NASDAQ:MSFT",
-        "NASDAQ:AMZN",
-        "###CEDEARS - VARIOS",
-        "NYSE:GOLD",
-        "NYSE:BABA",
-        "NYSE:DIS",
-      ],
-      active: true,
-      shared: false,
-      color: null,
-      description: null,
-      created: null,
-      modified: "2024-03-30T22:29:24.009796Z",
-    };
-  },
-  replaceSymbol: ({ body }) => {
+const client = require("../config/db");
+const Symbol = require("../models").Symbol;
+
+class SymbolsController {
+  constructor() {
+    this.symbolModel = new Symbol(client.db("tv"));
+    this.listSymbolsByUserId = this.listSymbolsByUserId.bind(this);
+  }
+
+  async listSymbolsByUserId() {
+    try {
+      // TODO: get userId from url
+      const list = this.symbolModel.listSymbolsByUserId(19343430);
+      return list;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  replaceSymbol({ body }) {
     return JSON.stringify(body);
-  },
-};
+  }
+}
+
+const symbolsController = new SymbolsController();
+module.exports = symbolsController;
