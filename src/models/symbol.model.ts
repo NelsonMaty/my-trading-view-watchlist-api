@@ -13,4 +13,4 @@ class Symbol {
   }
 }
 
-module.exports = Symbol;
+export { Symbol };

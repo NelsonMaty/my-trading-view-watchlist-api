@@ -1,1 +1,1 @@
-module.exports.symbolsController = require("./symbols.controller");
+export * from "./symbols.controller";

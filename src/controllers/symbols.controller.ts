@@ -1,5 +1,5 @@
-const client = require("../config/db");
-const Symbol = require("../models").Symbol;
+import { client } from "../config/db";
+import { Symbol } from "../models";
 
 class SymbolsController {
   constructor() {
@@ -23,4 +23,5 @@ class SymbolsController {
 }
 
 const symbolsController = new SymbolsController();
-module.exports = symbolsController;
+
+export { symbolsController };

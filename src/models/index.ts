@@ -1,1 +1,1 @@
-module.exports.Symbol = require("./symbol.model");
+export * from "./symbol.model";
