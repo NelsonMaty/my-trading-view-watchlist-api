@@ -22,7 +22,7 @@ class Symbol {
     return await this.collection.updateOne(selector, update);
   }
 
-  async replaceListForuserId(newList, userId) {
+  async replaceListForUserId(newList, userId) {
     const selector = { id: userId };
     const update = {
       $set: {
