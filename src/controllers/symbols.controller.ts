@@ -21,16 +21,20 @@ class SymbolsController {
     return JSON.stringify(body);
   }
 
-  appendSymbol({ body }) {
+  appendSymbol = async ({ body }) => {
     try {
       // TODO: get userId from url
-      const list = this.symbolModel.appendSymbolToUserId(19343430);
+      const symbol = body[0];
+      const result = await this.symbolModel.appendSymbolToUserId(
+        symbol,
+        19343430,
+      );
+      const list = this.symbolModel.listSymbolsByUserId(19343430);
+      return list;
     } catch (err) {
       return err;
     }
-    console.log(body);
-    return {};
-  }
+  };
 }
 
 const symbolsController = new SymbolsController();

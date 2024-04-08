@@ -12,14 +12,14 @@ class Symbol {
     return await this.collection.findOne(selector);
   }
 
-  async appendSymbolToUserId(userId) {
+  async appendSymbolToUserId(symbol, userId) {
     const selector = { id: userId };
     const update = {
       $push: {
-        symbols: "NYSE:BA",
+        symbols: symbol,
       },
     };
-    return await this.collection.updateOne(selector);
+    return await this.collection.updateOne(selector, update);
   }
 }
 
