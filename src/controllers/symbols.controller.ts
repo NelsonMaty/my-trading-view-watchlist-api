@@ -20,6 +20,17 @@ class SymbolsController {
   replaceSymbol({ body }) {
     return JSON.stringify(body);
   }
+
+  appendSymbol({ body }) {
+    try {
+      // TODO: get userId from url
+      const list = this.symbolModel.appendSymbolToUserId(19343430);
+    } catch (err) {
+      return err;
+    }
+    console.log(body);
+    return {};
+  }
 }
 
 const symbolsController = new SymbolsController();
