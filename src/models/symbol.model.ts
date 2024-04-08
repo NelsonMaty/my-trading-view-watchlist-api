@@ -21,6 +21,16 @@ class Symbol {
     };
     return await this.collection.updateOne(selector, update);
   }
+
+  async removeSymbolToUserId(symbol, userId) {
+    const selector = { id: userId };
+    const update = {
+      $pull: {
+        symbols: symbol,
+      },
+    };
+    return await this.collection.updateOne(selector, update);
+  }
 }
 
 export { Symbol };
