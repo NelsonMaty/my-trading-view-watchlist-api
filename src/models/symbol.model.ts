@@ -22,6 +22,16 @@ class Symbol {
     return await this.collection.updateOne(selector, update);
   }
 
+  async replaceListForuserId(newList, userId) {
+    const selector = { id: userId };
+    const update = {
+      $set: {
+        symbols: newList,
+      },
+    };
+    return await this.collection.updateOne(selector, update);
+  }
+
   async removeSymbolToUserId(symbol, userId) {
     const selector = { id: userId };
     const update = {
