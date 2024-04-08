@@ -54,13 +54,12 @@ class SymbolsController {
     try {
       // TODO: get userId from url
       const newList = body;
-      console.log(newList);
-      // const result = await this.symbolModel.replaceListForUserId(
-      //   newList,
-      //   19343430,
-      // );
+      const result = await this.symbolModel.replaceListForUserId(
+        newList,
+        19343430,
+      );
       const list = this.symbolModel.listSymbolsByUserId(19343430);
-      return list;
+      return list.symbols;
     } catch (err) {
       return err;
     }
