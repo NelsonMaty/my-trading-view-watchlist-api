@@ -4,10 +4,9 @@ import { Symbol } from "../models";
 class SymbolsController {
   constructor() {
     this.symbolModel = new Symbol(client.db("tv"));
-    this.listSymbolsByUserId = this.listSymbolsByUserId.bind(this);
   }
 
-  async listSymbolsByUserId() {
+  listSymbolsByUserId = () => {
     try {
       // TODO: get userId from url
       const list = this.symbolModel.listSymbolsByUserId(19343430);
@@ -15,7 +14,7 @@ class SymbolsController {
     } catch (err) {
       return err;
     }
-  }
+  };
 
   replaceSymbol({ body }) {
     return JSON.stringify(body);
